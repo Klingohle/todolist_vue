@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=T">
+    <title>Todolist Vue</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>   
+    <!-- Special thanks to https://v2.vuejs.org/v2/guide/installation.html and https://www.utf8icons.com/ -->
+</head>
+<body>
+<div id="todoAppVue">
+    <h1>Todolist Vue</h1>
+    <div class="ind">
+        <p>
+            <input type="text" id="newTodo" v-model="newTodo" class="textbox">
+            <button class="add" @click="addingTodo">add a todo</button>
+        </p>
+    </div>
+    <h1>Listing all todos</h1>
+    <div class="ind">
+        <ul>
+            <li v-for="(todo, index) in todos" :class="{'done' : todo.fertig }">
+                <p>{{ todo.description }}</p>
+                <button class="togglingTodo" @click="togglingTodo(index)">&#10004;</button>
+                <button class="deletingTodo" @click="deletingTodo(index)">&#10006;</button>
+            </li>
+        </ul> 
+    </div>
+    <h2>Open todos</h2>
+    <div class="ind">
+        <ul>
+            <li v-for="todo in open">{{ todo.description }}</li>
+        </ul> 
+    </div>
+    <h2>Checked todos</h2> 	
+    <div class="ind">
+        <ul>
+            <li v-for="todo in check">{{ todo.description }}</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    var app = new Vue ({
+        el: "#todoAppVue",
+        data: {
+            todos: [
+                {description: "Eating chocolate", fertig: false},
+                {description: "Cuddling cat", fertig: false},
+                {description: "Laughing", fertig: false}
+            ],
+            newTodo: ''
+        },
+        computed: {
+            check() {
+                return this.todos.filter(todo => todo.fertig);
+            },
+            open(){
+                return this.todos.filter(todo => !todo.fertig);
+            },
+        },
+        methods: {
+            addingTodo() {
+                this.todos.push({description: this.newTodo, fertig: false});
+                this.newTodo = '';
+            },
+            togglingTodo(index) {
+                this.todos[index].fertig = !this.todos[index].fertig;
+            },
+            deletingTodo(index) {
+                this.todos.splice(index, 1);
+            }
+        }
+    });
+</script> 
+</body>
+</html>

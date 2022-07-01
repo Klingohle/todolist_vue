@@ -1,0 +1,78 @@
+:root {
+        --redish: rgb(209, 40, 25);
+        --greenish: rgb(78, 140, 47);
+        --whiteish:rgb(255, 255, 255);
+        --orangeish: rgb(229, 146, 51);
+        --greyish:  rgb(231, 226, 226);
+    }
+    
+    body {
+        font: 1.25rem sans-serif;
+    }
+    
+    .add {
+        margin: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .ind {
+        margin: 1.75rem;
+    }
+
+    .textbox {
+        font-size: 18pt;
+        height: 42px;
+        width : 250px;
+    }
+
+    h2, h1 {
+        font-size: 1.5rem;
+    }
+    
+    label {
+        display: block;
+    }
+    
+    ul {
+        max-width: 25rem;
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    li {
+        padding: 5px;
+        border-radius: 4px;
+        border: var(--greyish) 0.025rem solid;
+        margin: 5px 0px;
+        display: flex;
+        align-items: center;
+    }
+    
+    li p {
+        margin: 0;
+    }
+    
+    li button {
+        border-radius: 4px;
+        color: var(--whiteish);
+    }
+    
+    .togglingTodo {
+        margin-left: auto;
+        background-color: var(--redish);
+    }
+    
+    .done .togglingTodo {
+        background-color: var(--greenish);
+    }
+    
+    .deletingTodo {
+        background-color: var(--orangeish);
+    }
+    
+    .done p {
+        text-decoration: line-through;
+    }
+    
+    
+    
